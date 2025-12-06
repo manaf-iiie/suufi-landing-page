@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Suufi</title>
+    <link rel="icon" type="image/png" href="assets/suufi-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=59">
+    <style>
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            min-height: calc(100vh - 160px);
+            margin-top: 0;
+        }
+        
+        .logo {
+            text-decoration: none;
+        }
+        
+        .contact-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        .contact-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(40px, 6vw, 64px);
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 16px;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        
+        .contact-text {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        
+        .contact-description {
+            color: #E8EEF3;
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+        
+        .contact-subtext {
+            color: #94A3B8;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        
+        .contact-button {
+            display: inline-block;
+            width: 100%;
+            max-width: 300px;
+            padding: 16px 32px;
+            background: #FFFFFF;
+            color: #000000;
+            font-family: 'Manrope', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: 8px;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .contact-button:hover {
+            background: #E8EEF3;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
+        }
+        
+        .contact-button:active {
+            transform: translateY(0);
+        }
+        
+        .contact-mockup {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        .contact-mockup img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        
+        .contact-container {
+            margin-top: 0;
+        }
+        
+        @media (max-width: 968px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .contact-text {
+                text-align: center;
+                align-items: center;
+            }
+            
+            .contact-mockup {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .contact-container {
+                padding: 40px 16px;
+            }
+            
+            .contact-header h1 {
+                font-size: 32px;
+            }
+            
+            .contact-description {
+                font-size: 16px;
+            }
+            
+            .contact-subtext {
+                font-size: 14px;
+            }
+            
+            .contact-mockup img {
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header / Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Suufi</a>
+                <!-- Mobile navigation toggle -->
+                <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu">
+                <label for="nav-toggle" class="nav-toggle-label">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+                <nav class="nav">
+                    <a href="index.html#features" class="nav-link">Features</a>
+                    <a href="index.html#screens" class="nav-link">Screens</a>
+                    <a href="index.html#how-it-helps" class="nav-link">How it helps</a>
+                    <a href="index.html#testimonials" class="nav-link">Testimonials</a>
+                    <a href="index.html#download" class="nav-link">Download</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <div class="contact-container">
+        <div class="contact-header">
+            <h1>Get Support</h1>
+        </div>
+        
+        <div class="contact-content">
+            <div class="contact-text">
+                <p class="contact-description">
+                    We're here to help. Click the button below to get in touch with us via email.
+                </p>
+                <p class="contact-subtext">
+                    For questions, support, feedback, or any inquiries about Suufi, we'd love to hear from you.
+                </p>
+                <a href="mailto:connect@suufiapp.com" class="contact-button">Contact Us</a>
+            </div>
+            
+            <div class="contact-mockup">
+                <img src="assets/ios-mockup.png" alt="Suufi app interface showing Islamic habit tracking features">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
