@@ -173,11 +173,25 @@ section {
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: 24px;
-    font-weight: 700;
-    color: #E8EEF3;
     font-family: 'Playfair Display', system-ui, serif;
+    font-weight: 700;
+    color: var(--text-primary);
     letter-spacing: 0.04em;
+    text-decoration: none;
+}
+
+.logo-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.logo-text {
+    color: var(--text-primary);
 }
 
 .nav-toggle {
