@@ -76,6 +76,22 @@
    RESET & BASE STYLES
    ============================================ */
 
+@font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('assets/fonts/Cormorant_Garamond/static/CormorantGaramond-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('assets/fonts/Cormorant_Garamond/static/CormorantGaramond-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -98,7 +114,8 @@ body {
    TYPOGRAPHY
    ============================================ */
 
-h1, h2, h3 {
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
     font-weight: 700;
     line-height: 1.2;
     color: #E8EEF3;
@@ -162,7 +179,7 @@ section {
     z-index: 1000;
     background: rgba(10, 10, 10, 0.6);
     backdrop-filter: blur(18px) saturate(140%);
-    border-bottom: 1px solid rgba(102, 205, 170, 0.1);
+    border-bottom: 1px solid rgba(168, 85, 247, 0.1);
     padding: 16px 0;
 }
 
@@ -363,7 +380,7 @@ section {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(148, 163, 184, 0.15), rgba(102, 205, 170, 0.1));
+    background: linear-gradient(135deg, rgba(148, 163, 184, 0.15), rgba(168, 85, 247, 0.1));
     opacity: 0;
     transition: opacity 0.4s ease;
     border-radius: inherit;
@@ -404,7 +421,7 @@ section {
     display: inline-block;
     padding: 6px 14px;
     background: #0D0D0D;
-    border: 1px solid rgba(102, 205, 170, 0.25);
+    border: 1px solid rgba(168, 85, 247, 0.25);
     border-radius: 999px;
     font-size: 14px;
     color: #94A3B8;
@@ -472,87 +489,122 @@ section {
 .features-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 28px;
 }
 
 .feature-card {
-    border-radius: 16px;
-    padding: 28px;
-    transition: all 0.3s ease;
+    border-radius: 22px;
+    padding: 30px 28px;
+    transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
     position: relative;
     border: 1px solid transparent;
+    overflow: hidden;
+    isolation: isolate;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 16px 44px rgba(2, 6, 23, 0.55);
+}
+
+.feature-card::before {
+    content: "";
+    position: absolute;
+    inset: -45%;
+    background: radial-gradient(circle at 18% 14%, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04) 28%, transparent 62%);
+    opacity: 0.42;
+    z-index: -1;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.feature-card::after {
+    content: "";
+    position: absolute;
+    left: 22px;
+    right: 22px;
+    top: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.35) 50%, transparent 100%);
+    opacity: 0.7;
+}
+
+.feature-card:hover {
+    transform: translateY(-7px) scale(1.01);
+    box-shadow: 0 24px 60px rgba(2, 6, 23, 0.75);
+}
+
+.feature-card:hover::before {
+    opacity: 0.9;
+    transform: translateY(-6px);
 }
 
 /* Habit Streaks - Orange/Brown */
 .feature-card--streak {
-    background: linear-gradient(135deg, rgba(120, 53, 15, 0.25), rgba(13, 13, 13, 0.98));
-    border-color: rgba(154, 52, 18, 0.15);
+    background: radial-gradient(circle at top left, rgba(192, 132, 252, 0.24), transparent 45%),
+                linear-gradient(145deg, rgba(88, 28, 135, 0.52), rgba(13, 13, 13, 0.98));
+    border-color: rgba(168, 85, 247, 0.3);
 }
 
 .feature-card--streak:hover {
-    border-color: rgba(251, 146, 60, 0.25);
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(251, 146, 60, 0.1);
+    border-color: rgba(192, 132, 252, 0.46);
+    box-shadow: 0 20px 52px rgba(168, 85, 247, 0.22);
 }
 
-/* Salah Tracking - Dark Green */
+/* Salah Tracking - Purple */
 .feature-card--salah {
-    background: linear-gradient(135deg, rgba(5, 46, 22, 0.25), rgba(13, 13, 13, 0.98));
-    border-color: rgba(22, 101, 52, 0.15);
+    background: radial-gradient(circle at top left, rgba(167, 139, 250, 0.24), transparent 45%),
+                linear-gradient(145deg, rgba(76, 29, 149, 0.5), rgba(13, 13, 13, 0.98));
+    border-color: rgba(139, 92, 246, 0.32);
 }
 
 .feature-card--salah:hover {
-    border-color: rgba(34, 197, 94, 0.25);
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(34, 197, 94, 0.1);
+    border-color: rgba(167, 139, 250, 0.48);
+    box-shadow: 0 20px 52px rgba(139, 92, 246, 0.24);
 }
 
-/* Analytics Dashboard - Pink (Reduced Intensity) */
+/* Analytics Dashboard - Indigo */
 .feature-card--analytics {
-    background: linear-gradient(135deg, rgba(190, 24, 93, 0.12), rgba(13, 13, 13, 0.98));
-    border-color: rgba(236, 72, 153, 0.08);
+    background: radial-gradient(circle at top left, rgba(129, 140, 248, 0.23), transparent 45%),
+                linear-gradient(145deg, rgba(49, 46, 129, 0.48), rgba(13, 13, 13, 0.98));
+    border-color: rgba(99, 102, 241, 0.3);
 }
 
 .feature-card--analytics:hover {
-    border-color: rgba(244, 114, 182, 0.15);
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(244, 114, 182, 0.05);
+    border-color: rgba(129, 140, 248, 0.46);
+    box-shadow: 0 20px 52px rgba(99, 102, 241, 0.22);
 }
 
 /* Dhikr Counter - Dark Purple */
 .feature-card--dhikr {
-    background: linear-gradient(135deg, rgba(46, 16, 101, 0.25), rgba(13, 13, 13, 0.98));
-    border-color: rgba(139, 92, 246, 0.15);
+    background: radial-gradient(circle at top left, rgba(216, 180, 254, 0.23), transparent 45%),
+                linear-gradient(145deg, rgba(88, 28, 135, 0.52), rgba(13, 13, 13, 0.98));
+    border-color: rgba(192, 132, 252, 0.3);
 }
 
 .feature-card--dhikr:hover {
-    border-color: rgba(168, 85, 247, 0.25);
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(168, 85, 247, 0.1);
+    border-color: rgba(216, 180, 254, 0.46);
+    box-shadow: 0 20px 52px rgba(192, 132, 252, 0.24);
 }
 
-/* Quran Reading Log - Dark Teal */
+/* Quran Reading Log - Deep Violet */
 .feature-card--quran {
-    background: linear-gradient(135deg, rgba(13, 42, 48, 0.25), rgba(13, 13, 13, 0.98));
-    border-color: rgba(20, 184, 166, 0.15);
+    background: radial-gradient(circle at top left, rgba(196, 181, 253, 0.23), transparent 45%),
+                linear-gradient(145deg, rgba(67, 56, 202, 0.42), rgba(13, 13, 13, 0.98));
+    border-color: rgba(129, 140, 248, 0.28);
 }
 
 .feature-card--quran:hover {
-    border-color: rgba(34, 211, 238, 0.25);
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(34, 211, 238, 0.1);
+    border-color: rgba(196, 181, 253, 0.45);
+    box-shadow: 0 20px 52px rgba(129, 140, 248, 0.2);
 }
 
-/* Daily Islamic Quotes - Yellow (Reduced Intensity) */
+/* Daily Islamic Quotes - Lavender */
 .feature-card--quotes {
-    background: linear-gradient(135deg, rgba(202, 138, 4, 0.12), rgba(13, 13, 13, 0.98));
-    border-color: rgba(234, 179, 8, 0.08);
+    background: radial-gradient(circle at top left, rgba(233, 213, 255, 0.23), transparent 45%),
+                linear-gradient(145deg, rgba(107, 33, 168, 0.44), rgba(13, 13, 13, 0.98));
+    border-color: rgba(216, 180, 254, 0.28);
 }
 
 .feature-card--quotes:hover {
-    border-color: rgba(250, 204, 21, 0.15);
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(250, 204, 21, 0.05);
+    border-color: rgba(233, 213, 255, 0.45);
+    box-shadow: 0 20px 52px rgba(216, 180, 254, 0.2);
 }
 
 .feature-icon {
@@ -566,6 +618,12 @@ section {
     position: relative;
     overflow: hidden;
     flex-shrink: 0;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: translateY(-2px) scale(1.08);
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.55);
 }
 
 .feature-icon-svg {
@@ -585,49 +643,49 @@ section {
     display: block;
 }
 
-/* Habit Streaks - Orange/Reddish-Brown (Flame) */
+/* Habit Streaks - Purple */
 .feature-icon--streak {
-    background: linear-gradient(135deg, rgba(180, 83, 9, 0.4), rgba(120, 53, 15, 0.95));
-    border: 1px solid rgba(154, 52, 18, 0.5);
-    box-shadow: inset 0 1px 0 rgba(251, 146, 60, 0.2);
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.4), rgba(88, 28, 135, 0.95));
+    border: 1px solid rgba(168, 85, 247, 0.45);
+    box-shadow: inset 0 1px 0 rgba(216, 180, 254, 0.25);
 }
 
 .feature-icon--streak .feature-icon-svg {
-    color: #fb923c !important;
+    color: #d8b4fe !important;
 }
 
 .feature-icon--streak .feature-icon-svg svg {
-    stroke: #fb923c !important;
+    stroke: #d8b4fe !important;
 }
 
-/* Salah Tracking - Green (Layers) */
+/* Salah Tracking - Violet */
 .feature-icon--salah {
-    background: linear-gradient(135deg, rgba(20, 83, 45, 0.4), rgba(5, 46, 22, 0.95));
-    border: 1px solid rgba(22, 101, 52, 0.5);
-    box-shadow: inset 0 1px 0 rgba(34, 197, 94, 0.2);
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.4), rgba(76, 29, 149, 0.95));
+    border: 1px solid rgba(139, 92, 246, 0.45);
+    box-shadow: inset 0 1px 0 rgba(196, 181, 253, 0.22);
 }
 
 .feature-icon--salah .feature-icon-svg {
-    color: #22c55e !important;
+    color: #c4b5fd !important;
 }
 
 .feature-icon--salah .feature-icon-svg svg {
-    stroke: #22c55e !important;
+    stroke: #c4b5fd !important;
 }
 
-/* Analytics Dashboard - Pink (Flag, Reduced Intensity) */
+/* Analytics Dashboard - Indigo */
 .feature-icon--analytics {
-    background: linear-gradient(135deg, rgba(190, 24, 93, 0.25), rgba(80, 20, 50, 0.95));
-    border: 1px solid rgba(236, 72, 153, 0.3);
-    box-shadow: inset 0 1px 0 rgba(244, 114, 182, 0.1);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.38), rgba(49, 46, 129, 0.95));
+    border: 1px solid rgba(129, 140, 248, 0.35);
+    box-shadow: inset 0 1px 0 rgba(196, 181, 253, 0.15);
 }
 
 .feature-icon--analytics .feature-icon-svg {
-    color: #ec4899 !important;
+    color: #c4b5fd !important;
 }
 
 .feature-icon--analytics .feature-icon-svg svg {
-    stroke: #ec4899 !important;
+    stroke: #c4b5fd !important;
 }
 
 /* Dhikr Counter - Purple (Infinity) */
@@ -645,47 +703,55 @@ section {
     stroke: #a855f7 !important;
 }
 
-/* Quran Reading Log - Teal/Blue (Library) */
+/* Quran Reading Log - Indigo */
 .feature-icon--quran {
-    background: linear-gradient(135deg, rgba(19, 78, 74, 0.4), rgba(13, 42, 48, 0.95));
-    border: 1px solid rgba(20, 184, 166, 0.5);
-    box-shadow: inset 0 1px 0 rgba(34, 211, 238, 0.2);
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.4), rgba(49, 46, 129, 0.95));
+    border: 1px solid rgba(129, 140, 248, 0.4);
+    box-shadow: inset 0 1px 0 rgba(196, 181, 253, 0.2);
 }
 
 .feature-icon--quran .feature-icon-svg {
-    color: #22d3ee !important;
+    color: #c4b5fd !important;
 }
 
 .feature-icon--quran .feature-icon-svg svg {
-    stroke: #22d3ee !important;
+    stroke: #c4b5fd !important;
 }
 
-/* Daily Islamic Quotes - Yellow (Star, Reduced Intensity) */
+/* Daily Islamic Quotes - Lavender */
 .feature-icon--quotes {
-    background: linear-gradient(135deg, rgba(202, 138, 4, 0.25), rgba(100, 70, 20, 0.95));
-    border: 1px solid rgba(234, 179, 8, 0.3);
-    box-shadow: inset 0 1px 0 rgba(250, 204, 21, 0.1);
+    background: linear-gradient(135deg, rgba(192, 132, 252, 0.38), rgba(107, 33, 168, 0.95));
+    border: 1px solid rgba(216, 180, 254, 0.35);
+    box-shadow: inset 0 1px 0 rgba(233, 213, 255, 0.18);
 }
 
 .feature-icon--quotes .feature-icon-svg {
-    color: #eab308 !important;
+    color: #f3e8ff !important;
 }
 
 .feature-icon--quotes .feature-icon-svg svg {
-    fill: #eab308 !important;
+    fill: #f3e8ff !important;
     stroke: none !important;
 }
 
 .feature-title {
-    font-size: 20px;
-    margin-bottom: 12px;
+    font-size: 30px;
+    margin-bottom: 14px;
     color: #E8EEF3;
+    letter-spacing: 0.01em;
+    line-height: 1.1;
 }
 
 .feature-description {
     font-size: 16px;
-    color: #94A3B8;
-    line-height: 1.6;
+    color: #B7C4D7;
+    line-height: 1.72;
+    max-width: 28ch;
+    transition: color 0.35s ease;
+}
+
+.feature-card:hover .feature-description {
+    color: #D7E0EC;
 }
 
 /* ============================================
@@ -706,7 +772,7 @@ section {
 
 .screen-placeholder {
     background: #0D0D0D;
-    border: 1px solid rgba(102, 205, 170, 0.25);
+    border: 1px solid rgba(168, 85, 247, 0.25);
     border-radius: 16px;
     padding: 40px 20px;
     min-height: 280px;
@@ -718,7 +784,7 @@ section {
 
 .screen-card {
     background: #0D0D0D;
-    border: 1px solid rgba(102, 205, 170, 0.25);
+    border: 1px solid rgba(168, 85, 247, 0.25);
     border-radius: 16px;
     overflow: hidden;
     display: flex;
@@ -735,7 +801,7 @@ section {
 }
 
 .screen-card:hover {
-    border-color: rgba(102, 205, 170, 0.4);
+    border-color: rgba(168, 85, 247, 0.4);
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
@@ -791,7 +857,7 @@ section {
 .screen-card-description {
     font-size: 18px;
     font-weight: 600;
-    color: #66CDAA;
+    color: #A855F7;
     margin: 0;
 }
 
@@ -827,7 +893,7 @@ section {
     background-origin: border-box;
     background-clip: padding-box, border-box;
     border-width: 2px;
-    box-shadow: 0 8px 32px rgba(102, 205, 170, 0.15);
+    box-shadow: 0 8px 32px rgba(168, 85, 247, 0.15);
 }
 
 .quote-text {
@@ -920,7 +986,7 @@ section {
     gap: 16px;
     padding: 18px 24px;
     background: rgba(13, 13, 13, 0.95);
-    border: 1px solid rgba(102, 205, 170, 0.15);
+    border: 1px solid rgba(168, 85, 247, 0.15);
     border-radius: 18px;
     backdrop-filter: blur(12px);
     width: 100%;
@@ -936,8 +1002,8 @@ section {
 .tool-item:nth-child(1) {
     opacity: 1;
     transform: scale(1.05);
-    border-color: rgba(102, 205, 170, 0.95);
-    box-shadow: 0 16px 48px rgba(102, 205, 170, 0.65), 0 0 0 2px rgba(102, 205, 170, 0.5);
+    border-color: rgba(168, 85, 247, 0.95);
+    box-shadow: 0 16px 48px rgba(168, 85, 247, 0.65), 0 0 0 2px rgba(168, 85, 247, 0.5);
     background: rgba(13, 13, 13, 1);
     z-index: 10;
 }
@@ -954,7 +1020,7 @@ section {
 }
 
 .tool-item:nth-child(1) .tool-icon {
-    box-shadow: 0 4px 16px rgba(102, 205, 170, 0.3);
+    box-shadow: 0 4px 16px rgba(168, 85, 247, 0.3);
 }
 
 .tool-icon svg {
@@ -1141,7 +1207,7 @@ section {
     border-radius: 999px;
     background:
         conic-gradient(from 210deg,
-            #66CDAA 0deg,
+            #A855F7 0deg,
             #06B6D4 140deg,
             #A78BFA 230deg,
             #1f2933 280deg,
@@ -1605,14 +1671,14 @@ section {
 
 .testimonial-card {
     background: #0D0D0D;
-    border: 1px solid rgba(102, 205, 170, 0.25);
+    border: 1px solid rgba(168, 85, 247, 0.25);
     border-radius: 16px;
     padding: 32px;
     transition: all 0.3s ease;
 }
 
 .testimonial-card:hover {
-    border-color: rgba(102, 205, 170, 0.4);
+    border-color: rgba(168, 85, 247, 0.4);
     transform: translateY(-4px);
 }
 
@@ -1633,7 +1699,7 @@ section {
    ============================================ */
 
 .cta-final {
-    background: radial-gradient(circle at center, rgba(102, 205, 170, 0.1) 0%, #000000 70%);
+    background: radial-gradient(circle at center, rgba(168, 85, 247, 0.1) 0%, #000000 70%);
     padding: 100px 16px;
     text-align: center;
 }
@@ -1669,7 +1735,7 @@ section {
 
 .footer {
     background: #000000;
-    border-top: 1px solid rgba(102, 205, 170, 0.1);
+    border-top: 1px solid rgba(168, 85, 247, 0.1);
     padding: 32px 16px;
 }
 
@@ -1763,7 +1829,7 @@ section {
 }
 
 .social-icon:focus {
-    outline: 2px solid rgba(102, 205, 170, 0.5);
+    outline: 2px solid rgba(168, 85, 247, 0.5);
     outline-offset: 2px;
 }
 
@@ -1803,7 +1869,7 @@ section {
         margin-top: 8px;
         padding: 12px 16px 16px;
         background: rgba(0, 0, 0, 0.95);
-        border-bottom: 1px solid rgba(102, 205, 170, 0.15);
+        border-bottom: 1px solid rgba(168, 85, 247, 0.15);
         display: none;
         flex-direction: column;
         gap: 12px;
@@ -1888,6 +1954,18 @@ section {
         padding: 24px;
         justify-content: flex-start;
         align-items: flex-start;
+    }
+
+    .feature-card {
+        padding: 26px 22px;
+    }
+
+    .feature-title {
+        font-size: 26px;
+    }
+
+    .feature-description {
+        max-width: 100%;
     }
 
     .charts-placeholder {
@@ -2126,7 +2204,7 @@ section {
 /* Focus styles for keyboard navigation */
 a:focus-visible,
 button:focus-visible {
-    outline: 2px solid #66CDAA;
+    outline: 2px solid #A855F7;
     outline-offset: 4px;
     border-radius: 4px;
 }
@@ -2164,7 +2242,7 @@ button:focus-visible {
     max-width: 600px;
     width: 100%;
     background: #0D0D0D;
-    border: 1px solid rgba(102, 205, 170, 0.25);
+    border: 1px solid rgba(168, 85, 247, 0.25);
     padding: 40px 32px;
     border-radius: 20px;
     text-align: center;
@@ -2178,7 +2256,7 @@ button:focus-visible {
     background: rgba(13, 13, 13, 0.4);
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(102, 205, 170, 0.2);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(168, 85, 247, 0.2);
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -2193,7 +2271,7 @@ button:focus-visible {
     inset: 0;
     border-radius: 24px;
     padding: 1px;
-    background: linear-gradient(135deg, rgba(102, 205, 170, 0.2), rgba(168, 85, 247, 0.1));
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(139, 92, 246, 0.1));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -2270,7 +2348,7 @@ button:focus-visible {
     padding: 14px 16px;
     background: #0B0B0B;
     border-radius: 14px;
-    border: 1px solid rgba(102, 205, 170, 0.25);
+    border: 1px solid rgba(168, 85, 247, 0.25);
     color: #E8EEF3;
     font-family: 'Manrope', system-ui, sans-serif;
     font-size: 16px;
@@ -2279,8 +2357,8 @@ button:focus-visible {
 
 .waitlist-input:focus {
     outline: none;
-    border-color: rgba(102, 205, 170, 0.5);
-    box-shadow: 0 0 0 3px rgba(102, 205, 170, 0.1);
+    border-color: rgba(168, 85, 247, 0.5);
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
 }
 
 .waitlist-input::placeholder {
@@ -2416,7 +2494,7 @@ button:focus-visible {
 }
 
 .waitlist-success {
-    color: #66CDAA;
+    color: #A855F7;
     margin-top: 16px;
     display: none;
     font-size: 16px;
@@ -2434,7 +2512,7 @@ button:focus-visible {
     min-width: 200px;
     padding: 14px 18px;
     border-radius: 12px;
-    border: 1px solid rgba(102, 205, 170, 0.15);
+    border: 1px solid rgba(168, 85, 247, 0.15);
     background: rgba(11, 11, 11, 0.8);
     color: #E8EEF3;
     font-size: 0.95rem;
@@ -2447,8 +2525,8 @@ button:focus-visible {
 }
 
 .waitlist-input:focus-visible {
-    border-color: #66CDAA;
-    box-shadow: 0 0 0 3px rgba(102, 205, 170, 0.2);
+    border-color: #A855F7;
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
     background: rgba(15, 23, 42, 0.9);
 }
 
@@ -2456,7 +2534,7 @@ button:focus-visible {
     padding: 14px 28px;
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.18);
-    background: rgba(102, 205, 170, 0.15);
+    background: rgba(168, 85, 247, 0.15);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     color: #E8EEF3;
@@ -2470,7 +2548,7 @@ button:focus-visible {
     box-shadow: 
         0 8px 32px rgba(0, 0, 0, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.2),
-        0 0 0 1px rgba(102, 205, 170, 0.1);
+        0 0 0 1px rgba(168, 85, 247, 0.1);
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -2483,7 +2561,7 @@ button:focus-visible {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(102, 205, 170, 0.3), rgba(6, 182, 212, 0.2));
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(6, 182, 212, 0.2));
     opacity: 0;
     transition: opacity 0.4s ease;
     border-radius: inherit;
@@ -2496,13 +2574,13 @@ button:focus-visible {
 
 .waitlist-submit:hover,
 .waitlist-submit:focus-visible {
-    background: rgba(102, 205, 170, 0.25);
+    background: rgba(168, 85, 247, 0.25);
     box-shadow: 
-        0 12px 40px rgba(102, 205, 170, 0.25),
+        0 12px 40px rgba(168, 85, 247, 0.25),
         inset 0 1px 0 rgba(255, 255, 255, 0.3),
-        0 0 0 1px rgba(102, 205, 170, 0.2);
+        0 0 0 1px rgba(168, 85, 247, 0.2);
     transform: translateY(-1px);
-    border-color: rgba(102, 205, 170, 0.3);
+    border-color: rgba(168, 85, 247, 0.3);
 }
 
 .success-message {
@@ -2510,8 +2588,8 @@ button:focus-visible {
     margin-top: 8px;
     padding: 12px 16px;
     border-radius: 12px;
-    background: rgba(102, 205, 170, 0.15);
-    border: 1px solid rgba(102, 205, 170, 0.3);
+    background: rgba(168, 85, 247, 0.15);
+    border: 1px solid rgba(168, 85, 247, 0.3);
     font-size: 0.9rem;
     color: #E8EEF3;
 }
