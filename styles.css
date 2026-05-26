@@ -104,7 +104,19 @@ html {
 
 body {
     font-family: 'Manrope', system-ui, sans-serif;
-    background: #000000;
+    background-color: #020615;
+    background-image:
+        radial-gradient(ellipse at 50% 18%, rgba(30, 75, 170, 0.34) 0%, rgba(8, 20, 48, 0.2) 36%, rgba(2, 6, 21, 0) 66%),
+        radial-gradient(1px 1px at 8% 16%, rgba(255, 255, 255, 0.65), transparent 60%),
+        radial-gradient(1px 1px at 18% 38%, rgba(255, 255, 255, 0.45), transparent 60%),
+        radial-gradient(1px 1px at 27% 70%, rgba(255, 255, 255, 0.5), transparent 60%),
+        radial-gradient(1px 1px at 36% 26%, rgba(255, 255, 255, 0.4), transparent 60%),
+        radial-gradient(1px 1px at 48% 58%, rgba(255, 255, 255, 0.55), transparent 60%),
+        radial-gradient(1px 1px at 57% 78%, rgba(255, 255, 255, 0.35), transparent 60%),
+        radial-gradient(1px 1px at 68% 22%, rgba(255, 255, 255, 0.5), transparent 60%),
+        radial-gradient(1px 1px at 76% 48%, rgba(255, 255, 255, 0.4), transparent 60%),
+        radial-gradient(1px 1px at 88% 68%, rgba(255, 255, 255, 0.5), transparent 60%),
+        linear-gradient(180deg, #01030d 0%, #020615 40%, #01030d 100%);
     color: #E8EEF3;
     line-height: 1.6;
     overflow-x: hidden;
@@ -259,7 +271,7 @@ section {
    ============================================ */
 
 .hero {
-    background: linear-gradient(180deg, #000000 0%, #0A0A0A 20%, #151515 40%, #1A1A1A 50%, #151515 60%, #0A0A0A 80%, #000000 100%);
+    background: transparent;
     padding: 72px 16px;
     min-height: auto;
     display: flex;
@@ -302,6 +314,35 @@ section {
     flex-wrap: wrap;
     gap: 12px;
     justify-content: center;
+}
+
+.store-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.store-button-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.store-button-link:hover,
+.store-button-link:focus {
+    transform: translateY(-1px);
+    filter: brightness(1.05);
+    outline: none;
+}
+
+.store-button-badge {
+    width: auto;
+    height: 50px;
+    display: block;
 }
 
 .btn-primary {
@@ -434,6 +475,13 @@ section {
     margin-top: 32px;
 }
 
+/* When hero visual is embedded inside hero text,
+   keep it centered and remove old side offsets. */
+.hero-text .hero-visual {
+    margin: 20px auto 28px;
+    max-width: 560px;
+}
+
 .phone-mockup {
     position: relative;
     background: transparent;
@@ -446,6 +494,7 @@ section {
     width: 100%;
     z-index: 3;
     padding: 0;
+    overflow: hidden;
 }
 
 .phone-mockup-offset {
@@ -475,7 +524,11 @@ section {
     width: 100%;
     height: auto;
     object-fit: cover;
-    border-radius: 16px;
+    display: block;
+    clip-path: inset(3px);
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
 }
 
 /* ============================================
@@ -483,7 +536,7 @@ section {
    ============================================ */
 
 .features {
-    background: linear-gradient(180deg, #000000 0%, #0A0A0A 50%, #000000 100%);
+    background: transparent;
 }
 
 .features-grid {
@@ -759,7 +812,7 @@ section {
    ============================================ */
 
 .screens {
-    background: linear-gradient(180deg, #000000 0%, #0A0A0A 50%, #000000 100%);
+    background: transparent;
 }
 
 .screens-grid {
@@ -873,7 +926,7 @@ section {
    ============================================ */
 
 .spiritual {
-    background: linear-gradient(180deg, #000000 0%, #0A0A0A 50%, #000000 100%);
+    background: transparent;
 }
 
 .spiritual-content {
@@ -917,7 +970,7 @@ section {
     --tool-card-height: 85px;
     --tool-card-gap: 20px;
     --tool-step: calc(var(--tool-card-height) + var(--tool-card-gap));
-    background: linear-gradient(180deg, #000000 0%, #0A0A0A 50%, #000000 100%);
+    background: transparent;
     padding: 80px 0;
 }
 
@@ -1658,7 +1711,7 @@ section {
    ============================================ */
 
 .testimonials {
-    background: linear-gradient(180deg, #000000 0%, #0A0A0A 50%, #000000 100%);
+    background: transparent;
 }
 
 .testimonials-grid {
@@ -1699,7 +1752,7 @@ section {
    ============================================ */
 
 .cta-final {
-    background: radial-gradient(circle at center, rgba(168, 85, 247, 0.1) 0%, #000000 70%);
+    background: transparent;
     padding: 100px 16px;
     text-align: center;
 }
@@ -1725,6 +1778,10 @@ section {
     margin-bottom: 40px;
 }
 
+.cta-content .store-buttons {
+    justify-content: center;
+}
+
 .cta-content .hero-badges {
     margin-top: 32px;
 }
@@ -1734,7 +1791,7 @@ section {
    ============================================ */
 
 .footer {
-    background: #000000;
+    background: transparent;
     border-top: 1px solid rgba(168, 85, 247, 0.1);
     padding: 32px 16px;
 }
@@ -1930,6 +1987,17 @@ section {
         transform-origin: center;
     }
 
+    .hero-text .hero-visual {
+        margin: 20px auto 28px;
+        max-width: 480px;
+        margin-left: auto;
+    }
+
+    .hero-text .hero-visual .mockup-image {
+        width: 100%;
+        transform: none;
+    }
+
     .screen-placeholder {
         min-height: 220px;
         padding: 32px 16px;
@@ -2050,6 +2118,10 @@ section {
         align-items: flex-start;
     }
 
+    .hero-cta .store-buttons {
+        justify-content: flex-start;
+    }
+
     .hero-visual {
         flex: 1.5;
         max-width: 940px; /* increase desktop mockup size */
@@ -2061,6 +2133,15 @@ section {
         height: auto;
         transform: scale(1.08); /* slightly larger without affecting text */
         transform-origin: center;
+    }
+
+    .hero-text .hero-visual {
+        margin: 22px 0 30px;
+        max-width: 700px;
+    }
+
+    .hero-text .hero-visual .mockup-image {
+        transform: none;
     }
 
     .features-grid {
@@ -2230,11 +2311,11 @@ button:focus-visible {
     padding: 80px 16px;
     display: flex;
     justify-content: center;
-    background: linear-gradient(180deg, #000000 0%, #020617 40%, #000000 100%);
+    background: transparent;
 }
 
 .waitlist {
-    background: linear-gradient(180deg, #000000 0%, #020617 40%, #000000 100%);
+    background: transparent;
     padding: 80px 16px;
 }
 
