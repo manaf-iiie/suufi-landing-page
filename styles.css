@@ -1925,8 +1925,11 @@ section {
         left: 0;
         margin-top: 8px;
         padding: 12px 16px 16px;
-        background: rgba(0, 0, 0, 0.95);
-        border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+        background: rgba(10, 10, 10, 0.6);
+        backdrop-filter: blur(18px) saturate(140%);
+        -webkit-backdrop-filter: blur(18px) saturate(140%);
+        border: 1px solid rgba(168, 85, 247, 0.1);
+        border-radius: 14px;
         display: none;
         flex-direction: column;
         gap: 12px;
@@ -1935,6 +1938,7 @@ section {
         transform-origin: top;
         transition: opacity 0.3s ease-out, transform 0.3s ease-out;
         text-align: center;
+        box-shadow: 0 12px 30px rgba(2, 6, 23, 0.42);
     }
 
     .nav-link {
